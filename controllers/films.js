@@ -33,4 +33,10 @@ filmRouter.delete("/:id", function(req, res){
   res.json(films);
 })
 
+// ADD new review:
+filmRouter.put("/:id/add-review", function(req, res){
+  films[req.params.id].reviews.push(req.body.review);
+  res.json(films);
+})
+
 module.exports = filmRouter;
