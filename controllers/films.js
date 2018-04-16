@@ -19,7 +19,18 @@ filmRouter.get("/:id", function(req, res){
 filmRouter.post("/", function(req, res){
   films.push(req.body.film);
   res.json(films)
-;})
+})
+
 // UPDATE
+filmRouter.put("/:id", function(req, res){
+  films[req.params.id] = req.body.film;
+  res.json(films);
+})
+
 // DELETE
+filmRouter.delete("/:id", function(req, res){
+  films.splice(req.params.id, 1);
+  res.json(films);
+})
+
 module.exports = filmRouter;
