@@ -8,6 +8,7 @@ var filmRouter = new express.Router();
 
 // GET ALL
 filmRouter.get("/", function(req, res){
+  debugger;
   res.json(films);
 })
 
@@ -18,13 +19,21 @@ filmRouter.get("/:id", function(req, res){
 
 // CREATE
 filmRouter.post("/", function(req, res){
-  films.push(req.body.film);
+  const filmToAdd = new Film({
+    title: req.body.title,
+    actors: req.body.actors
+  });
+  films.push(filmToAdd);
   res.json(films)
 })
 
 // UPDATE
 filmRouter.put("/:id", function(req, res){
-  films[req.params.id] = req.body.film;
+  const filmToAdd = new Film({
+    title: req.body.title,
+    actors: req.body.actors
+  });
+  films[req.params.id] = filmToAdd;
   res.json(films);
 })
 
