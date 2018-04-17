@@ -3,6 +3,7 @@ var Film = require('../client/src/models/film');
 var Review = require('../client/src/models/review');
 
 var express = require('express');
+// var app = express(); //  from review
 var filmRouter = new express.Router();
 
 // GET ALL
@@ -12,7 +13,7 @@ filmRouter.get("/", function(req, res){
 
 // FIND
 filmRouter.get("/:id", function(req, res){
-  res.json({data: films[req.params.id]});
+  res.json(films[req.params.id]);
 })
 
 // CREATE
@@ -35,7 +36,8 @@ filmRouter.delete("/:id", function(req, res){
 
 // ADD new review:
 filmRouter.put("/:id/add-review", function(req, res){
-  films[req.params.id].reviews.push(req.body.review);
+  films[req.params.id].addReview(req.body.review);
+  // films[req.params.id].reviews.push(req.body.review);
   res.json(films);
 })
 
