@@ -46,7 +46,6 @@ filmRouter.delete("/:id", function(req, res){
 // ADD new review:
 filmRouter.put("/:id/add-review", function(req, res){
   films[req.params.id].addReview(req.body.review);
-  // films[req.params.id].reviews.push(req.body.review);
   res.json(films);
 })
 
